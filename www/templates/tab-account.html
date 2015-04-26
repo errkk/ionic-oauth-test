@@ -1,0 +1,15 @@
+<ion-view view-title="Account">
+  <ion-content>
+    <ion-list>
+    <ion-toggle  ng-model="settings.enableFriends">
+        Enable Friends
+    </ion-toggle>
+    <ion-item>
+    Token: {{access_token}}
+    </ion-item>
+    <ion-item>
+    <button class="button button-block" ng-click="googleLogin()">Login with google</button>
+    </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
