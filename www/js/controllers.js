@@ -28,9 +28,9 @@ angular.module('starter.controllers', [])
     $scope.googleLogin = function() {
         pradOauth(CLIENT_ID, CLIENT_SECRET).then(function(result) {
             $window.localStorage.setItem("access_token", result.access_token);
+            $window.localStorage.setItem("refresh_token", result.refresh_token);
             $scope.access_token = $window.localStorage.getItem("access_token");
         }, function(error) {
-            console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
                 template: error
