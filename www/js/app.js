@@ -21,7 +21,15 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.constant('API_SERVER', 'http://localhost:8080/api')
+
+.constant('CLIENT_ID', 'b15573ce0951ab945d67')
+.constant('CLIENT_SECRET', 'aa10eef53949f3f7f408553cb9f87c86eb476bf9')
+
+
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+
+    $httpProvider.interceptors.push('pradAuthInterceptor');
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router

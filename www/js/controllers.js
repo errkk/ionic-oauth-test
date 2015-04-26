@@ -1,15 +1,4 @@
-var CLIENT_ID = 'b15573ce0951ab945d67';
-var CLIENT_SECRET = 'aa10eef53949f3f7f408553cb9f87c86eb476bf9';
-
 angular.module('starter.controllers', [])
-
-.run(function($window, $http, $ionicPopup) {
-    var token = $window.localStorage.getItem("access_token");
-
-    if(token) {
-        $http.defaults.headers.common.Authorization = "Bearer " + token;
-    }
-})
 
 .controller('DashCtrl', function($scope) {})
 
@@ -20,11 +9,11 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, $http, Chats) {
     $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope, $window, $ionicPopup, pradOauth) {
+.controller('AccountCtrl', function($scope, $window, $http, $ionicPopup, pradOauth, CLIENT_ID, CLIENT_SECRET) {
     $scope.googleLogin = function() {
         pradOauth(CLIENT_ID, CLIENT_SECRET).then(function(result) {
             $window.localStorage.setItem("access_token", result.access_token);

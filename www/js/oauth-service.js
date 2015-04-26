@@ -14,7 +14,8 @@ angular.module('prad.service.oauth', ["ngCordova.plugins.oauthUtility"])
             var cordovaMetadata = cordova.require("cordova/plugin_list").metadata;
             if(cordovaMetadata.hasOwnProperty("org.apache.cordova.inappbrowser") === true) {
 
-                var browserRef = window.open(AUTH_URI, "_blank", "location=yes,clearsessioncache=no,clearcache=yes");
+                var browserRef = window.open(AUTH_URI, "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
+
                 browserRef.addEventListener("loadstart", function(event) {
                     if((event.url).indexOf("http://localhost/callback") === 0) {
                         var authCode = (event.url).split("code=")[1];
@@ -50,4 +51,4 @@ angular.module('prad.service.oauth', ["ngCordova.plugins.oauthUtility"])
         }
         return deferred.promise;
     }
-}]);
+});
